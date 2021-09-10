@@ -1,0 +1,79 @@
+ .newrecipe {
+    display: flex;
+    position: absolute;
+    justify-content: space-around;
+    left: 60rem;
+    color: rgb(12, 0, 0);
+    border: rgb(10, 10, 10);
+    bottom: 615px;
+}
+ 
+.boton {
+
+    position: absolute;
+    top: 50%;
+    left: 40%;
+    background-color: rgba(255, 255, 255, 0.705);
+    border: none;
+    cursor: pointer; 
+    font-weight: 600;
+    width: 15rem;
+    height: 2.5rem;
+    
+
+}
+
+.boton:hover {
+    background-color: rgba(255, 255, 255, 0.486);
+    color: rgba(0, 0, 0, 0.651);
+    transition: 0.100s;
+}
+
+.title{
+    display: flex;
+    color: rgba(12, 0, 0, 0.671);
+    left: 0fr;
+    margin-left: 480px;
+    font-size: 125%;
+    margin-top: -12px;
+    cursor: pointer;
+
+}
+
+.load {
+    bottom: 10%;
+    left: 600rem;
+    justify-content: right;
+}
+
+.filterdiets{
+display: flex;
+height:20px;
+width:150px;
+position: relative;
+bottom:-10px;
+left:250px;
+}
+
+.filteralph{
+display: flex;
+height:20px;
+width:150px;
+position: relative;
+bottom:10px;
+left:600px;
+}
+
+.filterpun {
+display: flex;
+height:20px;
+width:150px;
+position: relative;
+bottom:30px;
+left:1000px;
+}
+.filterpun:hover, .filteralph:hover, .filterdiets:hover {
+    background-color: rgba(255, 255, 255, 0.274);
+    color: rgba(255, 255, 255, 0.87);
+    transition: 0.100s;
+}

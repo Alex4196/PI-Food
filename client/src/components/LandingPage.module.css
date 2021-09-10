@@ -1,0 +1,67 @@
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+
+.contenedor {
+
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-content: center;
+    width: 100%;
+    height: 100vh;
+}
+
+.video {
+
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: -999;
+    object-fit: cover;
+
+}
+
+.boton {
+
+    position: absolute;
+    top: 50%;
+    left: 40%;
+    background-color: rgba(56, 50, 50, 0.774);
+    border: none;
+    cursor: pointer; 
+    font-weight: 600;
+    width: 15rem;
+    height: 2.5rem;
+    
+
+}
+
+.boton:hover {
+    background-color: rgba(255, 255, 255, 0.486);
+    color: black;
+    transition: 0.25s;
+}
+
+.title {
+
+    color: rgba(245, 245, 220, 0.609);
+
+    font-family: 'Roboto Slab';
+
+    font-size: 600%;
+
+    font-weight: bold;
+
+    letter-spacing: 1.8px;
+
+    font-variant: small-caps;
+
+    transform: lowercase;
+
+    display: flex;
+
+    justify-content: center;
+    
+    position: absolute; top: -50px ;
+
+    
+}

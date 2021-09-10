@@ -3,11 +3,19 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import {Provider} from "react-redux";
+import store from "./store/index";
+import { BrowserRouter } from 'react-router-dom';
 
-ReactDOM.render(
+
+ReactDOM.render( //lo envuelvo en un provider para poder utilizar redux
   <React.StrictMode>
+ <Provider store={store} >
+  <BrowserRouter> 
     <App />
-  </React.StrictMode>,
+    </BrowserRouter>
+  </Provider>
+   </React.StrictMode>,
   document.getElementById('root')
 );
 
