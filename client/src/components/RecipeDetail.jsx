@@ -4,7 +4,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getRecipeDetail } from '../actions';
 import { useEffect } from 'react';
 import styles from './RecipeDetail.module.css';
-
+import { IoFastFoodOutline } from "react-icons/io5";
+import { IoArrowBackOutline } from "react-icons/io5";
 
 export default function Detail(props) {
 
@@ -19,25 +20,31 @@ export default function Detail(props) {
     
      myRecipe && console.log(myRecipe )
     return (
-        <div>
+        <div >
             {
                 typeof myRecipe === "object" ?
-                    <div>
+                    <div >
                         <Link to='/home'>
-                            <button> Home </button>
+                            <button className={styles.home}> <IoArrowBackOutline/> <IoFastFoodOutline/> </button>
                         </Link>
+                        <div classname={styles.contenedor}  >
+
+                            <div className={styles.thecard}>
+
+                        <div className={styles.thefront}>
+                    
+                        <h1  className={styles.title} >{myRecipe.title}</h1>
+                   
+                        <h2 className={styles.summary}> Dish summary: {myRecipe.summary && myRecipe.summary.replace(/<[^>]*>?/g, '')} </h2>
+
                            {myRecipe.image ? 
-                           <img  src={myRecipe.image} alt='' width='250px' height='200px' /> : null }
+                           <img className={styles.image} src={myRecipe.image} alt=''  /> : null }
+                       
+                        <p className={styles.puntos}> Punctuation: {myRecipe.spoonacularScore}</p>
                         
-                        <div classname={styles.contenedor}>
-                        <h1>{myRecipe.title}</h1>
-                        <h2> Dish summary: {myRecipe.summary && myRecipe.summary.replace(/<[^>]*>?/g, '')} </h2>
-                        <p> Punctuation: {myRecipe.spoonacularScore}</p>
-                        <h3> Health score: {myRecipe.healthScore}</h3>
-                        <h4> Step by step: {myRecipe.analyzedInstructions && myRecipe.analyzedInstructions ? myRecipe.analyzedInstructions.map(r => r.steps.map(s => s.step)).flat(1).join(' ') : myRecipe.steps} </h4>
-                        <h5>Type of diets:</h5>
+                        <h3 className={styles.score} > Health score: {myRecipe.healthScore}</h3>
                         
-                        <ul>
+                        <ul className={styles.types}> suitable for these diets:
                             {
                                 myRecipe.diets ? myRecipe.diets.map(e => {
                                     return <li>
@@ -51,8 +58,14 @@ export default function Detail(props) {
                                 })
                             }
                         </ul>
+                        </div>
+                      <div className={styles.theback}>
+                          
+                         <h4 className={styles.steps}> Step by step: 
+                         {myRecipe.analyzedInstructions && myRecipe.analyzedInstructions ? myRecipe.analyzedInstructions.map(r => r.steps.map(s => s.step)).flat(1).join(' ') : myRecipe.steps} </h4> 
+                        </div>
                       </div>
-                      
+                      </div>
                     </div> : <p>Loading...</p>
             }
         </div>

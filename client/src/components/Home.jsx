@@ -94,20 +94,30 @@ export default function Home() {
                     <option value='punDesc'>descending order</option>
                     <option hidden disabled selected value>Punctuation</option>
                 </select>
-                <Paginado
+                <div className={styles.paginado}  > 
+                <Paginado 
                     recipesPerPage={recipesPerPage}
-                    allRecipes={allRecipes.length} //necesito un valor numerico 
-                    paginado={paginado} />
+                    allRecipes={allRecipes.length} //necesito un valor numerico
+                   paginado={paginado} />
+                   </div>
+                     <div > 
                 {currentRecipes && currentRecipes.map(e => {
                     return (
-                        <fragment>
+                        <fragment className={styles.cartas} >
                             <Link to={"/home/" + e.id}>
-                                <Recipes id={e.id} name={e.diets ? e.diets : e.types.map(e => e.name)} image={e.image} title={e.title} key={e.id} />
+                                <Recipes 
+                                id={e.id} 
+                                title={e.title} 
+                                name={e.diets ? e.diets : e.types && e.types.map(e => e.name)} 
+                                image={e.image} 
+                                key={e.id} 
+                                />
                             </Link>
                         </fragment>
                     )
                 })
                 }
+                 </div> 
             </div>
         </div>
     )

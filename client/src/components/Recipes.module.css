@@ -1,12 +1,14 @@
-/*     .recipes {
-    display: flex;
-    justify-content: space-between;
-    position: absolute;
-    top: 60%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100;300&display=swap');
+
+      .recipes {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding: 10px;
+  text-decoration:none;
+  
     
-  } 
+  }  
 
   .title {
 
@@ -14,7 +16,7 @@
 
     font-family: 'Roboto Slab';
 
-    font-size:xx-large;
+    font-size:large;
 
     font-weight: bold;
 
@@ -27,29 +29,42 @@
     display: flex;
 
     justify-content: center;
+
+    text-decoration:none;
     
 
 }
- .box{
-
+  .box{
+ text-decoration: none;
   flex-wrap: nowrap;
-
   width: 220px;
-
   height: 270px;
-
-  background-color: #ffffff1a;
-
+  background-color: #ffffffa4;
   margin-left: 20px;
-
   margin-top: 150px;
-
   border-radius: 0.9rem;
-
   backdrop-filter: blur(4px);
+  margin:10 px;
+  margin-left: 55px;
+  text-align:center;
 
-}  
+}   
 
 .name {
-  color: black;
-}     */
+  height: 50px;
+    display: flex;
+    justify-content: center;
+    text-decoration:none;
+    font-family: 'Roboto Slab';
+    letter-spacing: 1.8px;
+    font-size: medium;
+    
+}      
+
+.img {
+  text-decoration: none;
+  border-radius: 30px; 
+  width: 100px; 
+  height:100px;
+  margin-top: 17px; 
+  }

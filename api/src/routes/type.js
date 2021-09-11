@@ -9,9 +9,3 @@ router.get('/', getAllType);
 module.exports = router;
 
 
-/* 
-
-type
--obtener todos los tipos de dietas posibles, si no encuentro , me deberia traer las dietas que existen en la api
--
- */

@@ -1,4 +1,4 @@
-import { notStrictEqual } from 'assert';
+
 import axios from 'axios';
 
 
@@ -11,24 +11,8 @@ export function createNewRecipe(id) {
 }
 
 
-
-
-
-/* export function filterByTypes(payload) {
- return function (dispatch) {
-  var json =  axios.get("http://localhost:3001/types")  
-  console.log('TYYYYYPES', json)
-  return dispatch({
-     type: "FILTER_BY_TYPE", 
-     payload: json.data
-  }
-)
-}
-} */
-
  export function filterByTypes(payload) {
-    /* return async function (dispatch) {
-      var json = axios.get("http://localhost:3001/types") */ 
+  
   return {
     type: "FILTER_BY_TYPE",
     payload
@@ -48,68 +32,12 @@ export function listRecipes() {
 
 
 
-/* export function filterByTypes() {
-  return async function (dispatch) {
-    var json = axios.get("http://localhost:3001/types")  
-return dispatch({
-  type: "FILTER_BY_TYPE",
-  payload: json.data
-});
-}
-} */
 
 export function orderBy(payload) {
   return { type: "ORDER_BY", payload };
 }
 
-/* 
-   export function filterAtoZ() {
-    return function (dispatch) {
-      return  axios.get("http://localhost:3001/recipes").then((recipe) => {
-        const orderAZ = recipe.data.sort((a, b) => {
-          if (a.name > b.name) return 1;
-          if (a.name < b.name) return -1;
-          return 0;
-        });
-        dispatch({
-          type: "ORDER_AZ",
-          payload: orderAZ,
-        });
-      });
-    };
-  } 
- */
 
-/*   export function orderAZ() {
-    return function(dispatch) {
-        return axios.get('http://localhost:3001/recipes')
-        .then(resp => {
-            const orderByAZ = resp.data.sort((a, b) => {    
-            });
-            dispatch({
-                type: "ORDER_A_TO_Z",
-                payload: orderByAZ
-            })
-        })
-    }
-}
- */
-/* export function orderZA() {
-  return function(dispatch) {
-      return axios.get('http://localhost:3001/recipes')
-      .then(resp => {
-          const orderByZA = resp.data.sort((b, a) => {
-              if (a.name > b.name) return 1;
-              if (a.name < b.name) return -1;
-              return 0;
-          });
-          dispatch({
-              type: "ORDER_Z_TO_A",
-              payload: orderByZA
-          })
-      })
-  }
-} */
 
 export function getNameRecipes(name, next) {
   return async function (dispatch) {
@@ -154,22 +82,10 @@ export function getTypes(name, next) {
 }
 
 
-/* export function postRecipe(payload) {
-return async function (dispatch) {
-  const post = await axios.post("http://localhost:3001/recipe", payload)
-/* console.log(post) */
-/* return post;
-} */
+
 
 export const postRecipe = (input, next) => {
-/*   console.log(  
-    input.title,
-     input.summary,
-     parseInt(input.spoonacularScore),
-     parseInt(input.healthscore),
-    input.steps,
-     input.types
-  )  */
+
   const pasos=[]
   pasos.push(input.steps)
   console.log(pasos) 
@@ -198,42 +114,3 @@ try{
 };
 }
 
-/*   export function orderByPunctuation() {
-    return function (dispatch) {
-      return axios.get("http://localhost:3001/recipes").then((recipe) => {
-        const orderPunctuation = recipe.data.sort((a, b) => {
-          if (!a.spoonacularScore) {
-            const punctuation = a.spoonacularScore;
-            a.spoonacularScore= punctuation;
-          }
-
-          if (!b.spoonacularScore) {
-            const punctuation = { metric: b.spoonacularScore};
-            b.spoonacularScore = punctuation;
-          }
-          if (parseInt(a.spoonacularScore) > parseInt(b.spoonacularScore)) return 1;
-          if (parseInt(a.spoonacularScore) < parseInt(b.spoonacularScore)) return -1;
-          return 0;
-        });
-        dispatch({
-          type: "ORDER_BY_PUNCTUATION",
-          payload: orderPunctuation,
-        });
-      });
-    };
-  } */
-
-
-
-
-
-/* export function getMovies(titulo) {
-    return function(dispatch) {
-      return fetch("http://www.omdbapi.com/?apikey=20dac387&s=" + titulo)
-        .then(response => response.json())
-        .then(json => {
-          dispatch({ type: "GET_MOVIES", payload: json });
-        });
-    };
-  }
-*/

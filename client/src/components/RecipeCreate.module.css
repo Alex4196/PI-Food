@@ -1,35 +1,43 @@
-.conteiner {
-    width: 1000px;
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
 
-    height: 500px;
-
-    background-color: #ffffff1a;
-
-    margin-left: 20px;
-
-    margin-top: 150px;
-
-    border-radius: 0.9rem;
-
-    backdrop-filter: blur(4px);
-
-    margin-left: 500px;
-}
-
-/* .name {
+/* body{
+width: 100vw;
+height: 100vh;
+background: url("./create.jpg")
 
 } */
-
-.summary {
-    width: 10%;
-    height: 150px;
-    padding: 12px 20px;
-    box-sizing: border-box;
-    border: 2px solid #ccc;
-    border-radius: 4px;
-    background-color: #f8f8f8;
-    resize: none;
+.conteiner {
+    width: 700px;
+    height: 500px;
+    background-color: #ffffff7e;
+    margin-top: 90px;
+    border-radius: 0.9rem;
+    backdrop-filter: blur(4px);
+    margin-left: 380px;
 }
+
+ .name, .summary, .spoonacularScore, .healthscore, .steps, .types {
+    height: 60px;
+    flex: 0 0 200px;
+    margin-left: 20px;
+    color: red;
+    
+} 
+
+ .summary {
+   margin-left: 40%;
+   margin-top: -7%;
+} 
+
+.steps {
+    margin-left: 40%;
+    margin-top: 5%;
+ } 
+
+ .types {
+    margin-left: 3%;
+    margin-top: -12%;
+ } 
 
 .title {
     
@@ -47,6 +55,29 @@
     width: 30%;
     padding: 5px;
     text-align: center;
+    font-family: 'Dancing Script';
  
      
 }
+
+.boton {
+    position: absolute;
+    top: 85%;
+    left: 30%;
+    background-color: rgba(255, 255, 255, 0.705);
+    border: none;
+    cursor: pointer; 
+    font-weight: 600;
+    width: 15rem;
+    height: 2.5rem;
+}
+
+.home {
+    font-size: 2.2em;
+}
+
+/* .name {
+    margin-left: 5%;
+    margin-top: 5%;
+    
+}  */

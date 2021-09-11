@@ -27,11 +27,9 @@ return (
     <div className={styles.wrap}>
         <div className={styles.search}>
 
-<input className={styles.searchTerm} type= 'text' placeholder='Search...' onChange={(e) => handleInputChange(e)}/>
+<input className={styles.searchTerm} type= 'text' placeholder='Search a recipe...' onChange={(e) => handleInputChange(e)}/>
 <button className={styles.searchButton}  type='submit' onClick={(e) => handleSubmit(e)}> <IoSearchSharp/> </button>
 </div>
-
     </div>
 )
-
 }

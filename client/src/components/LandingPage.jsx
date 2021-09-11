@@ -25,7 +25,7 @@ const LandingPage = () => {
           <video autoPlay loop muted className={styles.video} >
               <source src={Kitchen} type="video/mp4" />
           </video>
-          <Link to='/home'><button className={styles.boton}>HOME</button></Link>
+          <Link to='/home'><button className={styles.boton}>Discover the wonderful world of food recipes</button></Link>
       </div>
 
   )

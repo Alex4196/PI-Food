@@ -1,8 +1,113 @@
-.contenedor {
-    display: flex;
-    justify-content: space-between;
+
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&family=Italianno&family=MonteCarlo&family=Pacifico&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Allison&display=swap');
+
+/*  .contenedor {
+ position: relative;
+width: 250px;
+height: 320px;
+background: green;
+} 
+ */
+.thecard {
     position: absolute;
-    top: 60%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    width:100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: all 0.5s ease;
+    margin-left: 50px;
+    margin-top: 2%;
+
+}
+
+.thecard:hover {
+    transform: rotateY(180deg);
+}
+
+.thefront{
+    position: absolute;
+    width:90%;
+    height: 100%;
+    backface-visibility: hidden;
+    background:rgba(250, 250, 250, 0.616);
+    color:rgb(0, 1, 2);
+}
+
+.theback{
+    position: absolute;
+    width:90%;
+    height:100%;
+    backface-visibility: hidden;
+    background:rgba(250, 250, 250, 0.616);
+    color:rgb(12, 2, 1);
+    transform: rotateY(180deg);
+    margin-left: 10%;
+    
+
+}
+
+.summary {
+font-family: "Italianno";
+color:rgb(0, 8, 4);
+margin-top: -3%;
+}
+
+
+
+.home{
+    font-size: 2.2em;
+}
+
+.steps{
+    color: rgb(1, 0, 8);
+    font-size: large;
+    font-family: "Architects Daughter";
+}
+
+.types {
+left: 50px;
+margin-left: 850px;
+margin-top: -140px;
+font-size: 25px;
+border: 3px solid black;
+
+
+
+}
+.title {
+    color: rgb(144, 112, 112);
+    /* position: absolute; */
+    left: 80% ;
+     margin-left: 300px;
+     font-family: "Allison";
+     font-size: 70px;
+}
+
+.score {
+    display: flex;
+    margin-left: 550px;
+    font-size: 30px;
+    
+    color: rgb(12, 4, 1);
+   
+}
+
+.puntos {
+    display: flex;
+    color: rgb(12, 4, 1);
+    right: 400%;
+    margin-left: 550px;
+    margin-top: -300px;
+    font-size: 30px;
+
+}
+
+.image {
+    width:500px;
+   height:300px;
+   text-decoration: none;
+   border-radius: 80px; 
+   
+  
 }
