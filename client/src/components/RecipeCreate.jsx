@@ -1,11 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState} from 'react';
 import { Link, useHistory } from 'react-router-dom';
-import { postRecipe, getTypes } from '../actions/index'
+import { postRecipe} from '../actions/index'
 import { useDispatch, useSelector } from 'react-redux';
 import styles from "./RecipeCreate.module.css"
 import { IoRestaurantSharp } from "react-icons/io5";
 import { IoFastFoodOutline } from "react-icons/io5";
 import { IoArrowBackOutline } from "react-icons/io5";
+import Swal from 'sweetalert2'
+
 
 
 
@@ -39,13 +41,15 @@ export default function RecipeCreate() {
 
 
   const [input, setInput] = useState({
-    title: "",
+    name: "",
     summary: "",
     spoonacularScore: "",
     healthscore: "",
-    steps: "",
+    stepbystep: "",
     types: []
   })
+
+  console.log(input)
 
 
   function handleInputChange(e) {
@@ -61,34 +65,40 @@ export default function RecipeCreate() {
   }
 
   function handleSelect(e) {
+    if (input.types.includes(e.target.value)) {
+      alert("You already selected this diet. Try again.");
+    } else if (input.types.length >= 4) {
+      alert("You can select up to 3 diets.");
+    } else {
     setInput({
-
       ...input,
       types: [...input.types, e.target.value]
     })
    
   }
+}
+
 
 
 function handleSubmit(e){
   e.preventDefault();
   dispatch(postRecipe(input))
-  alert('The new recipe has been created')
+  Swal.fire({
+    title: 'The new recipe has been created!',
+    text: 'Enjoy the recipe!',
+    icon: 'success',
+    confirmButtonText: 'Cool'
+  })
   setInput({
-    title: "",
+    name: "",
     summary: "",
     spoonacularScore: "",
     healthscore: "",
-    steps: "",
+    stepbystep: "",
     types: []
   })
   history.push("/home")
 }
-
-
-
-
- console.log(input)  
 
 
   return (
@@ -100,25 +110,25 @@ function handleSubmit(e){
       </div>
        <div className={styles.conteiner}> 
       <form onSubmit={(e) => handleSubmit(e)}>
-        <div className={styles.name}>
+        <div   >
          
-          <input  className={errors.name && 'danger'} placeholder="Recipe Name..." type="text" name="title" value={input.name} onChange={handleInputChange} />
+          <input  className={errors.name && 'danger'} className={styles.name}  placeholder="Recipe Name..." type="text" name="name" value={input.name} onChange={handleInputChange} />
            {errors.name && (
-      <p className="danger">{errors.name}</p>
+      <p className={styles.danger}>{errors.name}</p>
     )} 
         </div>
         <div className={styles.summary}  >
           
           <textarea className={errors.summary && 'danger'} placeholder="Dish Summary..."  type="text" name="summary" value={input.summary} onChange={handleInputChange} />
            {errors.summary && (
-      <p className="danger">{errors.summary}</p>  
+      <p className={styles.danger}>{errors.summary}</p>  
     )} 
         </div>
         <div className={styles.spoonacularScore} >
          
           <input className={errors.spoonacularScore && 'danger'} placeholder="Punctuation..."  type="number" name="spoonacularScore" value={input.punctuation} onChange={handleInputChange} />
            {errors.spoonacularScore && (
-      <p className="danger">{errors.spoonacularScore}</p> 
+      <p className={styles.danger}>{errors.spoonacularScore}</p> 
       )}  
         </div>
 
@@ -126,14 +136,14 @@ function handleSubmit(e){
          
           <input  className={errors.healthscore && 'danger'} placeholder = "Health Score..."  type="number" name="healthscore" value={input.healthscore} onChange={handleInputChange} />
             {errors.healthscore && (
-      <p className="danger">{errors.healthscore}</p> 
+      <p className={styles.danger}>{errors.healthscore}</p> 
       )}  
         </div>
         <div className={styles.steps} >
           
-          <textarea  className={errors.stepbystep && 'danger'} placeholder="Step by Step..."  type="text" name="steps" value={input.stepbystep} onChange={handleInputChange} />
+          <textarea  className={errors.stepbystep && 'danger'} placeholder="Step by Step..."  type="text" name="stepbystep" value={input.stepbystep} onChange={handleInputChange} />
            {errors.stepbystep && (
-      <p className="danger">{errors.stepbystep}</p> 
+      <p className={styles.danger}>{errors.stepbystep}</p> 
       )}  
         </div>
         <div className={styles.types}>
@@ -145,13 +155,20 @@ function handleSubmit(e){
             )}
             
           </select>
+           <div>
+          <ul className={styles.list}>
+                        <li className={styles.lista}  >{input.types.map(i => i + ", ")}  </li>
+                        
+                    </ul>
+                    </div>  
         </div>
         <div >
           
-           <button className={styles.boton} type="submit" > Create Recipe  <IoRestaurantSharp/></button> 
+           <button className={styles.boton}  type="submit"  >  Create Recipe  <IoRestaurantSharp/></button> 
         </div>
       </form>
        </div> 
+       <p className={styles.copy} > Copyright ©️ 2021 The ultimate food app</p>
     </div>
     
   )

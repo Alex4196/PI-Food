@@ -7,18 +7,33 @@
     border: black;
     cursor: pointer; 
     font-weight: 600;
-    width: 15rem;
+    width: 5rem;
     height: 2.5rem;
     text-decoration: none;
-    
    border-style:solid;
    border-color:rgba(3, 0, 0, 0.849);
    
+   
 }
 
- .paginado:hover {
-    background-color: rgba(19, 4, 4, 0.281);
-    color: rgba(0, 0, 0, 0.651);
-    transition: 0.100s;
+
+.paginado:focus {
+  background: rgb(238, 108, 22);
+  color: rgba(7, 7, 7, 0.651);
 }
-   
+  
+
+.paginado:hover {
+    background-color: rgb(238, 108, 22);
+    color: rgba(0, 0, 0, 0.651);
+    transition: 0.100s; 
+    
+}
+
+.pag{
+  display: flex;
+  flex-direction: row;
+  list-style:none;
+
+}
+    

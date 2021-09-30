@@ -2,7 +2,9 @@
 const { Recipe, Type } = require('../db')
 const axios = require('axios');
 const { v4: uuidv4 } = require('uuid');
-const {Op} = require('sequelize')
+const {Op} = require('sequelize');
+require('dotenv').config();
+const { API_KEY } = process.env;
 
 
 
@@ -11,7 +13,7 @@ const {Op} = require('sequelize')
   try {
     const { name } = req.query
    
-    const apiInfo = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=5c3652a0810a4f29b490b65103a0f41b&addRecipeInformation=true&number=100`)
+    const apiInfo = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&addRecipeInformation=true&number=100`)
     const recipes = apiInfo.data.results
     const apiRecipes = await recipes.map((recipe) => {
       return {
@@ -40,7 +42,6 @@ const {Op} = require('sequelize')
         },
 });
 
-console.log(recipeTypes)
 
       return res.send(apiRecipes.concat(recipeTypes))
     }
@@ -75,7 +76,7 @@ console.log(recipeTypes)
   const { id } = req.params;
  
   if(id.length !== 36){
-  const apiInfo = await axios.get(`https://api.spoonacular.com/recipes/${id}/information?apiKey=5c3652a0810a4f29b490b65103a0f41b`)
+  const apiInfo = await axios.get(`https://api.spoonacular.com/recipes/${id}/information?apiKey=${API_KEY}`)
   const resultado = apiInfo.data
   resultado ? res.send(resultado) : null
   } 
@@ -89,11 +90,11 @@ console.log(recipeTypes)
         }
     }
   })
-   console.log(recipeBD)
+  /*  console.log(recipeBD) */
    
         
 return res.send(recipeBD)   
- /*  res.send({err: 'The detail fail'})  */
+ 
       }
   } catch (err) {
     next(err)
@@ -106,7 +107,7 @@ return res.send(recipeBD)
 async function createNewRecipe(req, res, next) {
   try{
   let { title, summary, healthScore, spoonacularScore, steps, diets} = req.body
-  console.log(title, summary, healthScore, spoonacularScore, steps, diets)
+  /* console.log(title, summary, healthScore, spoonacularScore, steps, diets) */
   if(!title || !summary) {
     return res.status(404).send('We need a diet and a summary')
   }
@@ -125,7 +126,7 @@ newRecipe.addType(c)
 
 });
 
-console.log(dietas)
+
 res.status(201).send(newRecipe);
 } catch (error) {
 next(error);

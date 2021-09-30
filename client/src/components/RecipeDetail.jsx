@@ -36,21 +36,22 @@ export default function Detail(props) {
                         <h1  className={styles.title} >{myRecipe.title}</h1>
                    
                         <h2 className={styles.summary}> Dish summary: {myRecipe.summary && myRecipe.summary.replace(/<[^>]*>?/g, '')} </h2>
-
+                        <div  className={styles.image} >  
                            {myRecipe.image ? 
                            <img className={styles.image} src={myRecipe.image} alt=''  /> : null }
-                       
+                       </div>
                         <p className={styles.puntos}> Punctuation: {myRecipe.spoonacularScore}</p>
                         
                         <h3 className={styles.score} > Health score: {myRecipe.healthScore}</h3>
                         
-                        <ul className={styles.types}> suitable for these diets:
+                        <ul className={styles.types}> Suitable for these diets:
                             {
-                                myRecipe.diets ? myRecipe.diets.map(e => {
+                              myRecipe.diets &&  myRecipe.diets.length ? myRecipe.diets.map(e => {
                                     return <li>
                                         {e}
                                     </li>
                                 }) : 
+                                myRecipe.diets ? " All diets" : 
                                 myRecipe.types && myRecipe.types.map(f => {
                                     return <li>
                                         {f.name}
@@ -61,13 +62,18 @@ export default function Detail(props) {
                         </div>
                       <div className={styles.theback}>
                           
-                         <h4 className={styles.steps}> Step by step: 
-                         {myRecipe.analyzedInstructions && myRecipe.analyzedInstructions ? myRecipe.analyzedInstructions.map(r => r.steps.map(s => s.step)).flat(1).join(' ') : myRecipe.steps} </h4> 
+                         <h4 className={styles.steps}> <h1 className={styles.titulostep}> Step by step </h1>  
+                         { myRecipe.analyzedInstructions && myRecipe.analyzedInstructions.length ? myRecipe.analyzedInstructions.map(r => r.steps.map(s => s.step)).flat(1).join(' '): myRecipe.analyzedInstructions ? "Sorry, this recipe does not have Step by Step.": myRecipe.steps} </h4> 
+                         <div className={styles.enjoy} >
+                         <h1 > {myRecipe.analyzedInstructions && myRecipe.analyzedInstructions.length?  "Enjoy this wonderful and exquisite recipe!!" : null}</h1>
+                         </div>
                         </div>
+                        
                       </div>
                       </div>
                     </div> : <p>Loading...</p>
             }
+            <p className={styles.copy} > Copyright ©️ 2021 The ultimate food app</p>
         </div>
 
     )

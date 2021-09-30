@@ -1,14 +1,6 @@
 
 import axios from 'axios';
-
-
-
-
-export function createNewRecipe(id) {
-  return {
-    type: "ADD_NEW_RECIPE", payload: id
-  };
-}
+import Swal from 'sweetalert2'
 
 
  export function filterByTypes(payload) {
@@ -19,7 +11,6 @@ export function createNewRecipe(id) {
   };
 }
  
-
 export function listRecipes() {
   return async function (dispatch) {
     var json = await axios.get('http://localhost:3001/recipes')
@@ -30,17 +21,13 @@ export function listRecipes() {
   }
 }
 
-
-
-
 export function orderBy(payload) {
   return { type: "ORDER_BY", payload };
 }
 
-
-
-export function getNameRecipes(name, next) {
+ export function getNameRecipes(name, next) {
   return async function (dispatch) {
+ 
     try {
       var json = await axios.get("http://localhost:3001/recipes?name=" + name)
       return dispatch({
@@ -48,11 +35,28 @@ export function getNameRecipes(name, next) {
         payload: json.data
       })
     } catch (err) {
-      alert('This recipes does not exist')
-      console.log('error')
+     Swal.fire({
+        title: 'The Recipe does not exist',
+        text: '',
+        icon: 'error',
+        confirmButtonText: 'Cool'
+      });
     }
   }
+} 
+
+/* export function getNameRecipes(name) {
+
+  return function(dispatch){
+    axios.get("http://localhost:3001/recipes?name=" + name)
+    .then(r => r.data)
+.then(data => dispatch({
+  type: "GET_NAME_RECIPES",
+  payload: data
+}))
 }
+}
+ */
 
 export function getRecipeDetail(id) {
   return async function (dispatch) {
@@ -65,7 +69,6 @@ export function getRecipeDetail(id) {
   }
 }
 
-
 export function getTypes(name, next) {
   return async function (dispatch) {
     try {
@@ -76,19 +79,21 @@ export function getTypes(name, next) {
         payload: json.data
       })
     } catch (err) {
-      next(err)
+       Swal.fire({
+        title: 'Does not exist recipe with that Diet',
+        text: '',
+        icon: 'error',
+        confirmButtonText: 'Cool'
+      });
     }
   }
 }
 
-
-
-
 export const postRecipe = (input, next) => {
 
   const pasos=[]
-  pasos.push(input.steps)
-  console.log(pasos) 
+  pasos.push(input.stepbystep)
+ 
 
   return async function (dispatch) {
 try{
@@ -96,7 +101,7 @@ try{
       method: 'post',
       url: 'http://localhost:3001/recipes/create',
       data: {
-        title: input.title,
+        title: input.name,
         summary: input.summary,
         spoonacularScore: parseInt(input.spoonacularScore),
         healthScore: parseInt(input.healthscore),
@@ -109,7 +114,7 @@ try{
       payload: newRecipe.data
     })
   } catch(err){
-    console.log('maradooooooooona')
+    console.log('The creation of recipe fail')
   }
 };
 }

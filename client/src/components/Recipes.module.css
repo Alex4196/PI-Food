@@ -1,42 +1,27 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100;300&display=swap');
 
-      .recipes {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  padding: 10px;
-  text-decoration:none;
-  
-    
-  }  
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Acme&family=Amatic+SC&family=Caveat&family=Lobster&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Acme&family=Caveat&family=Lobster&display=swap');
+
+
 
   .title {
-
     color: rgb(7, 0, 0);
-
-    font-family: 'Roboto Slab';
-
-    font-size:large;
-
+    font-family: "Amatic SC" ;
+    font-size:28px;
     font-weight: bold;
-
     letter-spacing: 1.8px;
-
     font-variant: small-caps;
-
     transform: lowercase;
-
     display: flex;
-
     justify-content: center;
-
-    text-decoration:none;
-    
-
+    text-decoration-line:none;
 }
   .box{
- text-decoration: none;
-  flex-wrap: nowrap;
+ text-decoration-line: none;
   width: 220px;
   height: 270px;
   background-color: #ffffffa4;
@@ -44,21 +29,30 @@
   margin-top: 150px;
   border-radius: 0.9rem;
   backdrop-filter: blur(4px);
-  margin:10 px;
+  margin:10px;
   margin-left: 55px;
-  text-align:center;
-
+  text-align:center; 
 }   
+
+.box:hover {
+  background-color:rgba(238, 108, 22, 0.801);
+  color: rgba(0, 0, 0, 0.568);
+  transition: 0.100s;
+  margin-top: -0.5em;
+}
+
+
 
 .name {
   height: 50px;
     display: flex;
     justify-content: center;
-    text-decoration:none;
-    font-family: 'Roboto Slab';
+    text-decoration-line:none ;
+    font-family: 'Caveat';
     letter-spacing: 1.8px;
     font-size: medium;
-    
+    margin-top: 120px;
+    color: black;
 }      
 
 .img {
@@ -66,5 +60,11 @@
   border-radius: 30px; 
   width: 100px; 
   height:100px;
-  margin-top: 17px; 
+ 
   }
+
+  .imagen{
+    margin-top: -190px;
+  }
+
+ 

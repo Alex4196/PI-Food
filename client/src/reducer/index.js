@@ -1,4 +1,6 @@
 
+import Swal from 'sweetalert2'
+
 const initialState = {
   recipes: [],
   filter: [],
@@ -14,6 +16,7 @@ function rootReducer(state = initialState, action) {
   switch (action.type) {
 
     case "GET_RECIPES":
+     
       return {
         ...state,
         recipes: action.payload,
@@ -23,23 +26,13 @@ function rootReducer(state = initialState, action) {
     case "GET_NAME_RECIPES":
       return {
         ...state,
-        recipes: action.payload
+        recipes:  action.payload 
       }
-
-    case "ADD_NEW_RECIPE":
-      return {
-        ...state
-      }
-
     case "GET_TYPES":
       return {
         ...state,
         types: action.payload
       }
-
-
-
-
     case "ORDER_BY":
       let sortedArr = action.payload === "asc" ?
         state.recipes.sort(function (a, b) {
@@ -108,7 +101,7 @@ function rootReducer(state = initialState, action) {
       })
 
       const encontradas = dietasApi.concat(dietasDb)
-      console.log(encontradas)
+    
       if (encontradas.length) {
         return {
           ...state,
@@ -119,7 +112,7 @@ function rootReducer(state = initialState, action) {
         alert('Any recipe has that diet')
       }
 
-
+     break;
 
     default: return state;
   }
